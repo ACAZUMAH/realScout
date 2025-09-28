@@ -11,11 +11,16 @@ const Stack = createNativeStackNavigator();
 
 export const StackNavigator = () => {
   const { isAuthenticated } = useAppAuthentication();
+
+  const initialRoute = React.useMemo(() => {
+    return isAuthenticated ? appRoutes.TABS : appRoutes.SIGNIN;
+  }, [isAuthenticated]);
+
   return (
     <>
       <StatusBar hidden={true} />
       <Stack.Navigator
-        initialRouteName={isAuthenticated ? appRoutes.TABS : appRoutes.SIGNIN}
+        initialRouteName={initialRoute}
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name={appRoutes.SIGNIN} component={Signin} />

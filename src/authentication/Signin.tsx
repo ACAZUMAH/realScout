@@ -1,23 +1,27 @@
 import React from "react";
 import {
-    Alert,
-    Image,
-    ScrollView,
-    Text,
-    TouchableOpacity,
-    View,
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { appRoutes } from "src/constants";
 import icons from "src/constants/icons";
 import images from "src/constants/images";
+import { useAppNavigation } from "src/hooks/useAppNavigation";
 import { useSignin } from "./hooks/useSignin";
 
 export const Signin = () => {
   const { useGoogleSignin } = useSignin();
+  const {navigateByReplace } = useAppNavigation();
+
   const onGoogleSignin = async () => {
     const result = await useGoogleSignin();
     if (result) {
-      console.log("Signin result:", result);
+      navigateByReplace(appRoutes.TABS);
     } else {
       Alert.alert("Error", "Failed to sign in. Please try again.");
     }

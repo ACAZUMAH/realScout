@@ -11,7 +11,7 @@ export const useAppAuthentication = () => {
     async (session?: any) => {
       const res = await account.get();
       if (res.$id) {
-        const userAvatar = avatar.getInitials({ name: res.name });
+        const userAvatar = avatar.getInitialsURL(res.name);
         dispatch(
           authenticationActions.update({
             user: { ...res, avatar: userAvatar.toString() },
@@ -24,7 +24,9 @@ export const useAppAuthentication = () => {
     [dispatch]
   );
 
-  const signout = useCallback(() => {
+  const signout = useCallback(async () => {
+    const result = await account.deleteSession({ sessionId: "current" });
+    if (!result) return;
     dispatch(authenticationActions.reset());
   }, [dispatch]);
 
