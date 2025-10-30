@@ -18,7 +18,7 @@ export const useAppAuthentication = () => {
             session,
             isAuthenticated: true,
           })
-        );
+        );   
       }
     },
     [dispatch]

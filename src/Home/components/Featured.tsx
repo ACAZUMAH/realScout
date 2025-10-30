@@ -13,7 +13,10 @@ export const Featured = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <FeaturedCard />
+      <View className="flex flex-row gap-5 mt-1">
+        <FeaturedCard />
+        <FeaturedCard />
+      </View>
     </View>
   );
 };
