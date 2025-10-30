@@ -8,7 +8,7 @@ import { Recommendations } from "./components/Recommendations";
 
 export const Home = () => {
   return (
-    <SafeAreaView className="h-full bg-[#ffffff]">
+    <SafeAreaView className="h-full bg-white">
       <View className="px-3">
         <HomeHeader />
         <SearchBar />

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "./useAppReduxHooks";
 export const useAppAuthentication = () => {
   const dispatch = useAppDispatch();
   const authentication = useAppSelector((state) => state.authentication);
-  //console.log("Authentication state:", authentication);
+  
   const signin = useCallback(
     async (session?: any) => {
       const res = await account.get();

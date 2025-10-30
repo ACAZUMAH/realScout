@@ -20,7 +20,7 @@ export const FeaturedCard: React.FC<FeaturedCardProps> = ({ onPress }) => {
       />
 
       <View
-        className="flex flex-row items-center bg-[#ffffff] px-3 py-1.5 rounded-full
+        className="flex flex-row items-center bg-white px-3 py-1.5 rounded-full
         absolute top-4 right-4"
       >
         <Image source={icons.star} className="size-3.5" />
