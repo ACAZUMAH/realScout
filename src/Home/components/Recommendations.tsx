@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Filters } from "src/components/Filters";
-import { PropertyCard } from "src/components/property";
 
 export const Recommendations = () => {
   return (
@@ -16,13 +15,7 @@ export const Recommendations = () => {
           </Text>
         </TouchableOpacity>
       </View>
-
       <Filters />
-      
-      <View className="flex flex-row gap-5 mt-5">
-        <PropertyCard />
-        <PropertyCard />
-      </View>
     </View>
   );
 };

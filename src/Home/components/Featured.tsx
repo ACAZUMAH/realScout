@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { FeaturedCard } from "src/components/property";
 
 export const Featured = () => {
@@ -13,10 +13,15 @@ export const Featured = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <View className="flex flex-row gap-5 mt-1">
-        <FeaturedCard />
-        <FeaturedCard />
-      </View>
+      <FlatList
+        data={[1, 2, 3]}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={() => <FeaturedCard />}
+        keyExtractor={(item) => item.toString()}
+        contentContainerClassName="flex gap-5"
+        bounces={false}
+      />
     </View>
   );
 };
