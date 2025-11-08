@@ -17,4 +17,4 @@ export const avatar = new Avatars(client);
 
 export const account = new Account(client);
 
-export const tables = new TablesDB(client);
+export const databases = new TablesDB(client);

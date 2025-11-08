@@ -1,8 +1,25 @@
 import React from "react";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import { FeaturedCard } from "src/components/property";
+import {
+  ActivityIndicator,
+  FlatList,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import Conditional from "src/components/conditional/Conditional";
+import { FeaturedCard } from "./FeaturedCard";
 
-export const Featured = () => {
+interface FeaturedProps {
+  properties: any[];
+  handlePress: (id: string) => void;
+  loading?: boolean;
+}
+
+export const Featured: React.FC<FeaturedProps> = ({
+  properties,
+  handlePress,
+  loading,
+}) => {
   return (
     <View className="my-5">
       <View className="flex flex-row items-center justify-between mb-5">
@@ -14,13 +31,20 @@ export const Featured = () => {
         </TouchableOpacity>
       </View>
       <FlatList
-        data={[1, 2, 3]}
+        data={properties}
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={() => <FeaturedCard />}
-        keyExtractor={(item) => item.toString()}
+        renderItem={({ item }) => (
+          <FeaturedCard item={item} onPress={() => handlePress(item.$id)} />
+        )}
+        keyExtractor={(item) => item.$id}
         contentContainerClassName="flex gap-5"
         bounces={false}
+        ListEmptyComponent={
+          <Conditional condition={loading!}>
+            <ActivityIndicator size="large" className="text-primary-300 mt-5" />
+          </Conditional>
+        }
       />
     </View>
   );

@@ -1,14 +1,17 @@
 import React from "react";
 import { Image, TextInput, TouchableOpacity, View } from "react-native";
 import icons from "src/constants/icons";
-import { useDebouncedCallback } from 'use-debounce';
+import { useDebouncedCallback } from "use-debounce";
 
-export const SearchBar = () => {
-  const [searchText, setSearchText] = React.useState("");
+interface SearchBarProps {
+  search: string;
+  onSearch: (query: string) => void;
+}
 
-const debouncedSearch = useDebouncedCallback((text: string) => {
-    setSearchText(text);
-  }, 1000)
+export const SearchBar: React.FC<SearchBarProps> = ({ search, onSearch }) => {
+  const debouncedSearch = useDebouncedCallback((text: string) => {
+    onSearch(text);
+  }, 100);
 
   return (
     <View
@@ -18,7 +21,7 @@ const debouncedSearch = useDebouncedCallback((text: string) => {
       <View className="flex-1 flex flex-row items-center justify-start z-50">
         <Image source={icons.search} className="size-6 mr-2" />
         <TextInput
-          value={searchText}
+          value={search}
           onChangeText={debouncedSearch}
           placeholder="Search for properties..."
           placeholderTextColor="#191D31"

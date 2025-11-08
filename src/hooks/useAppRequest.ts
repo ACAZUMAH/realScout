@@ -47,7 +47,7 @@ export const useAppRequest = <T, P extends Record<string, string | number>>({
     if (!skip) {
       fetchData(params);
     }
-  }, []);
+  }, [params]);
 
   const refetch = async (newParams: P) => await fetchData(newParams);
 

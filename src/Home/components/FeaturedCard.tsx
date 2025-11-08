@@ -4,16 +4,17 @@ import icons from "src/constants/icons";
 import images from "src/constants/images";
 
 interface FeaturedCardProps {
-  onPress?: () => void;
+  item: any;
+  onPress: () => void;
 }
 
-export const FeaturedCard: React.FC<FeaturedCardProps> = ({ onPress }) => {
+export const FeaturedCard: React.FC<FeaturedCardProps> = ({ onPress, item }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       className="flex flex-col items-center w-60 h-80 relative"
     >
-      <Image source={images.japan} className="size-full rounded-2xl" />
+      <Image source={{ uri: item.image }} className="size-full rounded-2xl" />
       <Image
         source={images.cardGradient}
         className="size-full rounded-2xl absolute bottom-0"
@@ -25,7 +26,7 @@ export const FeaturedCard: React.FC<FeaturedCardProps> = ({ onPress }) => {
       >
         <Image source={icons.star} className="size-3.5" />
         <Text className="text-xs font-rubik-bold text-primary-300 ml-1">
-          4.4
+          {item.rating}.0
         </Text>
       </View>
       <View className="flex flex-col items-start absolute bottom-5 inset-x-5">
@@ -33,15 +34,15 @@ export const FeaturedCard: React.FC<FeaturedCardProps> = ({ onPress }) => {
           className="text-xl font-rubik-extraBold text-accent-100"
           numberOfLines={1}
         >
-          Modern Apartment
+          {item.name}
         </Text>
         <Text className="text-base font-rubik text-accent-100">
-          22 w 15th St, New York, NY
+          {item.address}
         </Text>
 
         <View className="flex flex-row items-center justify-between w-full">
           <Text className="text-xl font-rubik-extraBold text-accent-100">
-            $2,500
+            $ {item.price}
           </Text>
           <Image source={icons.heart} className="size-5" />
         </View>
