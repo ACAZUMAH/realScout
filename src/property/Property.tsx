@@ -8,7 +8,7 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import Conditional from "src/components/conditional/Conditional";
 import icons from "src/constants/icons";
@@ -16,6 +16,7 @@ import images from "src/constants/images";
 import { useAppRequest } from "src/hooks/useAppRequest";
 import { Facility } from "./components/facility";
 import { Galleries } from "./components/Galleries";
+import { Review } from "./components/Review";
 import { useGetPropertyById } from "./hooks/useGetProperty";
 
 export const Property = () => {
@@ -174,11 +175,49 @@ export const Property = () => {
 
               <Conditional condition={data?.gallery.length > 0}>
                 <View className="mt-8">
-                  <Text className="text-black-300 text-2xl font-rubik-bold">
+                  <Text className="text-black-300 text-2xl font-rubik-bold mb-2">
                     Gallery
                   </Text>
 
                   <Galleries galleries={data?.gallery} />
+                </View>
+              </Conditional>
+
+              <View className="mt-8">
+                <Text className="text-black-300 text-2xl font-rubik-bold">
+                  Location
+                </Text>
+
+                <View className="flex flex-row items-center justify-start mt-4 gap-2">
+                  <Image source={icons.location} className="w-7 h-7" />
+                  <Text className="text-black-200 text-md font-rubik-medium">
+                    {data?.address}
+                  </Text>
+                </View>
+
+                <Image
+                  source={images.map}
+                  className="w-full h-56 mt-3 rounded-xl"
+                />
+              </View>
+
+              <Conditional condition={data?.reviews.length > 0}>
+                <View className="mt-8">
+                  <View className="flex flex-row justify-between">
+                    <View className="flex flex-row items-center justify-start gap-2">
+                      <Image source={icons.star} className="size-7" />
+                      <Text className="text-black-300 text-xl font-rubik-bold">
+                        {data?.rating} ({data?.reviews?.length} reviews)
+                      </Text>
+                    </View>
+                    <TouchableOpacity>
+                      <Text className="text-base font-rubik-bold text-primary-300">
+                        View All
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+
+                  <Review item={data?.reviews[0]} />
                 </View>
               </Conditional>
             </View>

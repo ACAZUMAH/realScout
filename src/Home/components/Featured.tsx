@@ -7,6 +7,8 @@ import {
   View,
 } from "react-native";
 import Conditional from "src/components/conditional/Conditional";
+import { appRoutes } from "src/constants";
+import { useAppNavigation } from "src/hooks/useAppNavigation";
 import { FeaturedCard } from "./FeaturedCard";
 
 interface FeaturedProps {
@@ -20,11 +22,12 @@ export const Featured: React.FC<FeaturedProps> = ({
   handlePress,
   loading,
 }) => {
+  const { navigateToTab } = useAppNavigation();
   return (
     <View className="my-5">
       <View className="flex flex-row items-center justify-between mb-5">
         <Text className="text-xl font-rubik-bold text-black-300">Featured</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigateToTab(appRoutes.EXPLORE)}>
           <Text className="text-base font-rubik-bold text-primary-300">
             See All
           </Text>
