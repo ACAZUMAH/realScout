@@ -40,7 +40,7 @@ export const Property = () => {
       <Conditional condition={Boolean(data)}>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerClassName="pb-32 bg-white"
+          contentContainerClassName="pb-40 bg-white"
         >
           <View
             className="relative w-full"
@@ -223,6 +223,34 @@ export const Property = () => {
             </View>
           </View>
         </ScrollView>
+
+        <View
+          className="absolute bg-white bottom-0 w-full rounded-t-3xl
+         border-t border-r border-l border-primary-200 p-7"
+        >
+          <View className="flex flex-row justify-between gap-10">
+            <View className="flex flex-col items-start justify-start">
+              <Text className="text-black-200 text-xl font-rubik-medium">
+                PRICE
+              </Text>
+              <Text
+                numberOfLines={1}
+                className="text-primary-300 text-3xl font-rubik-extraBold"
+              >
+                ${data?.price}
+              </Text>
+            </View>
+
+            <TouchableOpacity
+              className="flex-1 flex flex-row items-center justify-center
+             bg-primary-300 py-3 rounded-full shadow-md shadow-zinc-400"
+            >
+              <Text className="text-white text-lg text-center font-rubik-semiBold">
+                Book Now
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </Conditional>
     </View>
   );
