@@ -29,10 +29,11 @@ function getRandomSubset<T>(
   if (minItems > maxItems) {
     throw new Error("minItems cannot be greater than maxItems");
   }
-  if (minItems < 0 || maxItems > array.length) {
-    throw new Error(
-      "minItems or maxItems are out of valid range for the array"
-    );
+  if (minItems < 1) {
+    throw new Error("minItems must be at least 1");
+  }
+  if (maxItems > array.length) {
+    throw new Error("maxItems cannot exceed array length");
   }
 
   // Generate a random size for the subset within the range [minItems, maxItems]

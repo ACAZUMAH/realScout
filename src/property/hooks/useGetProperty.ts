@@ -1,3 +1,4 @@
+import { Query } from "react-native-appwrite";
 import { collections } from "src/constants";
 import { config, databases } from "src/services";
 
@@ -11,6 +12,7 @@ export const useGetPropertyById = async ({ id }: propertyParams) => {
       databaseId: config.databaseId!,
       tableId: collections.PROPERTIES!,
       rowId: id,
+      queries: [Query.select(["*", "agent.*", "reviews.*", "gallery.*"])],
     });
 
     return response;
