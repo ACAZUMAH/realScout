@@ -26,7 +26,7 @@ const Explore = () => {
   });
 
   const handlePropertyPress = (id: string) => {
-    navigate(appRoutes.PROPERTY, { propertyId: id });
+    navigate(appRoutes.PROPERTY, { id: id });
   };
 
   return (

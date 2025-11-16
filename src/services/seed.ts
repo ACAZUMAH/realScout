@@ -2,15 +2,15 @@ import { ID } from "react-native-appwrite";
 import { collections } from "../constants";
 import { config, databases } from "./appwrite-client";
 import {
-    agentImages,
-    galleryImages,
-    propertiesImages,
-    reviewImages,
+  agentImages,
+  galleryImages,
+  propertiesImages,
+  reviewImages,
 } from "./data";
 
 const propertyTypes = [
   "House",
-  "Townhome",
+  "Townhouse",
   "Condo",
   "Duplex",
   "Studio",
@@ -113,7 +113,7 @@ async function seed() {
         databaseId: config.databaseId!,
         tableId: collections.GALLERIES!,
         rowId: ID.unique(),
-        data: { images: image },
+        data: { image },
       });
       galleries.push(gallery);
     }
@@ -153,7 +153,7 @@ async function seed() {
           bedrooms: Math.floor(Math.random() * 5) + 1,
           bathrooms: Math.floor(Math.random() * 5) + 1,
           rating: Math.floor(Math.random() * 5) + 1,
-          facilities: selectedFacilities,
+          amenities: selectedFacilities,
           image: image,
           agent: assignedAgent.$id,
           reviews: assignedReviews.map((review) => review.$id),

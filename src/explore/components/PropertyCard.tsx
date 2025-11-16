@@ -20,7 +20,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
       <View className="flex flex-row justify-between w-40 rounded-2xl">
         <View
           className="flex flex-row items-center absolute px-2 
-             top-5 right-5 bg-white/90 p-1 rounded-full z-50"
+             top-2 right-2 bg-white/90 p-1 rounded-full z-50"
         >
           <Image source={icons.star} className="size-2.5" />
           <Text className="text-xs font-rubik-bold text-primary-300 ml-0.5">
@@ -30,10 +30,10 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
 
         <Image
           source={{ uri: item.image }}
-          className="w-full h-40 rounded-2xl"
+          className="w-full h-32 rounded-2xl"
         />
       </View>
-      <View className="flex flex-col w-35 justify-between my-3">
+      <View className="flex flex-col w-36 gap-8 my-3">
         <Text className="text-2xl font-rubik-bold text-black-300">
           {item.name}
         </Text>
@@ -42,7 +42,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
         </Text>
       </View>
 
-      <View className="flex flex-col justify-between items-end my-3 pr-3">
+      <View className="flex flex-col gap-10 items-end my-3 pr-3">
         <Image
           source={icons.heart}
           className="w-8 h-8 size-5"

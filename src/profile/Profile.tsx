@@ -12,9 +12,9 @@ export const Profile = () => {
   const { signout, user } = useAppAuthentication();
   const { navigateByReplace } = useAppNavigation();
 
-  const handleSignout = () => {
+  const handleSignout = async () => {
+    await signout();
     navigateByReplace(appRoutes.SIGNIN);
-    signout();
   }
 
   return (

@@ -44,7 +44,7 @@ export const useAppRequest = <T, P extends Record<string, string | number>>({
   );
 
   useEffect(() => {
-    if (!skip) {
+    if (!skip && !data) {
       fetchData(params);
     }
   }, [params]);

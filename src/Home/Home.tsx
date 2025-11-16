@@ -47,11 +47,14 @@ export const Home = () => {
   }, [filter, searchQuery]);
 
   const handlePropertyPress = (id: string) => {
-    navigate(appRoutes.PROPERTY, { propertyId: id });
+    navigate(appRoutes.PROPERTY, { id: id });
   };
 
   return (
     <SafeAreaView className="h-full">
+      {/* <Button onPress={() => seed()}>
+        Seed
+      </Button> */}
       <View className="px-3">
         <FlatList
           data={data}

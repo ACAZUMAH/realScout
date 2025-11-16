@@ -30,18 +30,5 @@ export const useAppAuthentication = () => {
     dispatch(authenticationActions.reset());
   }, [dispatch]);
 
-//   const getUser = async () => {
-//     try {
-//       const res = await account.get();
-
-//       if (res.$id) {
-//         const userAvatar = avatar.getInitials({ name: res.name });
-//         dispatch(
-//           authenticationActions.update({ user: { ...res, avatar: userAvatar } })
-//         );
-//       }
-//     } catch (error) {}
-//   };
-
   return { ...authentication, signin, signout };
 };

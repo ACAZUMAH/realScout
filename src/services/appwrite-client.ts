@@ -1,7 +1,7 @@
 import { Account, Avatars, Client, TablesDB } from "react-native-appwrite";
 
 export const config = {
-  platform: "com.realScout.app",
+  platform: "com.devAzumah.app",
   endPoint: `${process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT}`,
   projectId: `${process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID}`,
   databaseId: `${process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID}`,
