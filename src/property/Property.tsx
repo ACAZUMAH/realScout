@@ -13,6 +13,7 @@ import {
 import Conditional from "src/components/conditional/Conditional";
 import icons from "src/constants/icons";
 import images from "src/constants/images";
+import { useAppNavigation } from "src/hooks/useAppNavigation";
 import { useAppRequest } from "src/hooks/useAppRequest";
 import { Facility } from "./components/facility";
 import { Galleries } from "./components/Galleries";
@@ -21,7 +22,7 @@ import { useGetPropertyById } from "./hooks/useGetProperty";
 
 export const Property = () => {
   const { params } = useRoute();
-
+  const { navigateBack } = useAppNavigation();
   const { data, loading } = useAppRequest({
     fn: useGetPropertyById,
     //@ts-ignore
@@ -65,6 +66,7 @@ export const Property = () => {
                 <TouchableOpacity
                   className="flex flex-row rounded-full size-10 items-center 
                   justify-center bg-primary-200"
+                  onPress={() => navigateBack()}
                 >
                   <Image source={icons.backArrow} className="size-5" />
                 </TouchableOpacity>
